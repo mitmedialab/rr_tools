@@ -43,11 +43,15 @@ if __name__ == '__main__':
     parser.add_argument('timestamps_file', type=str, default='timestamps_sample.txt', help='''Name 
         of the text file with timestamps, e.g. "timestamps_sample.txt". Each line of the file lists an audio file followed by 
         start and stop times seperated by tabs, e.g. "audio_sample.wav    HH:MM:SS    HH:MM:SS"''')
-    parser.add_argument('-i', dest='in_dir', type=str, default="", help='Directory containing audio and timestamp files. Default is current working directory.')
-    parser.add_argument('-o', dest='out_dir', type=str, default="", help='Directory where cut .wav files will be exported. Default is current working directory.')
+    parser.add_argument('-i', dest='in_dir', type=str, default="./", help='Directory containing audio and timestamp files. Default is current working directory.')
+    parser.add_argument('-o', dest='out_dir', type=str, default="./", help='Directory where cut .wav files will be exported. Default is current working directory.')
     
     args = parser.parse_args()
-    
+
+    #provides helpful information in terminal
+    info = '\nTimestamps file: %s\nInput direcory: %s\nOutput directory: %s\n' % (args.timestamps_file, args.in_dir, args.out_dir)
+    print(info)
+
     #num keeps track of how many times each audio file has been split for naming purposes
     num = {}
     with open(args.in_dir + args.timestamps_file, 'r') as f:
@@ -55,6 +59,7 @@ if __name__ == '__main__':
             line = line.rstrip().split('\t')
             print(line)
             cut_audio(line)
+
 
 
             
