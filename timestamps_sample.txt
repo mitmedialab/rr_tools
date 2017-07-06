@@ -1,4 +1,2 @@
-p124_post_speech.wav	00:00:23	00:00:28
-heyoe.wav	00:00:00	00:00:02
-heyoe.wav	00:00:02	00:00:06
-p124_post_speech.wav	00:06:51	00:07:00
+audio_sample.wav	00:00:00	00:00:04
+audio_sample.wav	00:00:06	00:00:10

@@ -4,6 +4,7 @@
 # [1] text file format: AUDIO_FILE_NAME HH:MM:SS HH:MM:SS
 
 import argparse
+import os
 from pydub import AudioSegment
 
 def cut_audio(line):
@@ -38,12 +39,12 @@ def get_num(audio_file_name):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Cuts .wav files at specified start 
-        and stop times''')
-    parser.add_argument('timestamps_file', help='''name of text file with timestamps, "timestamps.txt",
-        each line lists the audio file followed by the start and stop times seperated by tabs 
-        ex. my_file.wav    HH:MM:SS    HH:MM:SS''')
-    parser.add_argument('in_dir', help='directory containing audio and timestamp files')
-    parser.add_argument('out_dir', help='directory where cut .wav files will be exported')
+        and stop times. Requires a .txt file to detail this information.''')
+    parser.add_argument('timestamps_file', type=str, default='timestamps_sample.txt', help='''Name 
+        of the text file with timestamps, e.g. "timestamps_sample.txt". Each line of the file lists an audio file followed by 
+        start and stop times seperated by tabs, e.g. "audio_sample.wav    HH:MM:SS    HH:MM:SS"''')
+    parser.add_argument('-i', dest='in_dir', type=str, default="", help='Directory containing audio and timestamp files. Default is current working directory.')
+    parser.add_argument('-o', dest='out_dir', type=str, default="", help='Directory where cut .wav files will be exported. Default is current working directory.')
     
     args = parser.parse_args()
     
@@ -54,5 +55,7 @@ if __name__ == '__main__':
             line = line.rstrip().split('\t')
             print(line)
             cut_audio(line)
+
+
             
 
