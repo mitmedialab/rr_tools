@@ -1,8 +1,11 @@
 import argparse
-import pyacoustics
-import praatio
-import pyacoustics.intensity_and_pitch
-import praatio.praat_pi
+import subprocess
+# if on MacOS, creat symbolic link by running the following command in terminal
+# ln -s /Applications/Praat.app/Contents/MacOS/Praat /usr/local/bin/praat
 
-#pyacoustics.intensity_and_pitch()
-pyacoustics.intensity_and_pitch.praat_pi.getPraatPitchAndIntensity()
+try:
+	x = subprocess.check_output(["praat", "--run", "audio_analyzer.praat", "test.wav"])
+	print(x)
+except Exception as e:
+	print e
+	print "Praat didn't work!"
