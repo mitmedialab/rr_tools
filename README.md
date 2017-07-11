@@ -58,6 +58,55 @@ positional arguments:
 optional arguments:
 - `-h`, `--help`: show this help message and exit
 
+## LIWC analysis
+
+[LIWC](http://liwc.wpengine.com/) is a program for Linguistic Inquiry and Word
+Count that does all sorts of interesting text analysis. The [API user
+manual](http://www.receptiviti.ai/receptiviti-api-user-manual/) has information
+about the output you can get. Note that to use the API, you either need the
+free trial or a license.
+
+The scripts we have so far were developed for a particular dataset with
+particular naming conventions for files, participant IDs, and session numbers.
+Some work needs to be done to generalize these scripts for other datasets.
+
+### Usage
+`python run-liwc.py [-h] [--server SERVER] [--verbose] key secret pids dir1`
+
+Get the LIWC scores for a speaker. Pass in a list of files for speakers. Each
+filename is used to get the participant and session, used to tag the content.
+The participant is used to create the speakers via the Receptiviti API, and
+also used with the session number to get scores.
+
+positional arguments:
+    - `key`: API key
+    - `secret`: secret key
+    - `pids`: file containing list of pids
+    - `dir1`: dir containing files containing text for the speakers, with
+      filenames containing participant IDs and session numbers
+
+optional arguments:
+    - `-h`, `--help`: show this help message and exit
+    - `--server SERVER`: server to use for analysis
+    - `--verbose`, `-v`: verbose output
+
+### Analyze LIWC
+
+`python analyze-liwc.py [-h] indir outdir`
+
+Process the LIWC scores for a set of people. Provide a list of filenames for
+files containing JSON LIWC output from Receptiviti.
+
+positional arguments:
+    - `indir`: dir containing files containing JSON LIWC Receptiviti output,
+      with filenames containing participant IDs and session numbers
+    - `outdir`: dir where we should save output files after the analysis is
+      complete
+
+optional arguments:
+    - `-h`, `--help`: show this help message and exit
+
+
 
 ## Reporting Bugs
 
