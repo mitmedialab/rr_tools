@@ -10,7 +10,7 @@ These tools were built and tested with:
   - used to edit audio files in `audio_cutter.py`
   - MIT license
 - praat
-  - install from http://www.fon.hum.uva.nl/praat/
+  - install from www.fon.hum.uva.nl/praat/
   - used to analyze audio files in `audio_comparer.py`
   - if on MacOS, create symbolic link to praat by running the following command:
   - `ln -s /Applications/Praat.app/Contents/MacOS/Praat /usr/local/bin/praat`
