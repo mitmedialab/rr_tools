@@ -9,6 +9,11 @@ These tools were built and tested with:
   - `pip install`, see github.com/jiaaro/pydub for info
   - used to edit audio files in `audio_cutter.py`
   - MIT license
+- praat
+  - install from http://www.fon.hum.uva.nl/praat/
+  - used to analyze audio files in `audio_comparer.py`
+  - if on MacOS, create symbolic link to praat by running the following command:
+  - `ln -s /Applications/Praat.app/Contents/MacOS/Praat /usr/local/bin/praat`
 
 ## audio_cutter
 
@@ -29,6 +34,26 @@ optional arguments:
   current working directory.
 - `-o OUT_DIR`       Directory where cut .wav files will be exported. Default is
   current working directory.
+
+## audio_comparer
+
+`usage: audio_comparer.py [-h] [-i IN_DIR] [-i2 IN_DIR2] speech_files`
+
+Compares speech files using mean pitch, mean intensity, and speaking rate. 
+
+positional arguments:
+- `speech_files`  Name of text file with speech files to be compared, e.g.
+  "speech_files_sample.txt". Each line contains the name of the
+  first audio file followed by a tab and then the second audio
+  file, e.g. 'FILE.wav FILE2.wav'.
+
+optional arguments:
+- `-h`, `--help`     show this help message and exit
+- `-i IN_DIR`        Directory containing the first row of audio files. Default is
+  current working directory.
+- `-i2 IN_DIR2`   Directory containig the second row of audio files. Default is
+  the directory containing the first row of audio files.
+
 
 ## Reporting Bugs
 
