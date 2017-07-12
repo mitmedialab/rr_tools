@@ -1,3 +1,66 @@
+###########################################################################
+# Audio analysis with Praat
+# Adam Gumbardo
+# July 2017
+#
+# Uses Jacqueline Kory Westlund's rr_entrain_speech.praat with slight
+# modifications.
+#
+###########################################################################
+# Audio entrainment with Praat
+# Jacqueline Kory Westlund
+# June 2017
+#
+# Uses the Praat Script Syllable Nuclei from de Jong and Wempe (information
+# below) for speaking rate detection. Their script has been moved into a
+# procedure and minimally modified.
+#
+###########################################################################
+#                                                                         #
+#  Praat Script Syllable Nuclei                                           #
+#  Copyright (C) 2008  Nivja de Jong and Ton Wempe                        #
+#                                                                         #
+#    This program is free software: you can redistribute it and/or modify #
+#    it under the terms of the GNU General Public License as published by #
+#    the Free Software Foundation, either version 3 of the License, or    #
+#    (at your option) any later version.                                  #
+#                                                                         #
+#    This program is distributed in the hope that it will be useful,      #
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of       #
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        #
+#    GNU General Public License for more details.                         #
+#                                                                         #
+#    You should have received a copy of the GNU General Public License    #
+#    along with this program.  If not, see http://www.gnu.org/licenses/   #
+#                                                                         #
+###########################################################################
+# modified 2010.09.17 by Hugo Quené, Ingrid Persoon, & Nivja de Jong
+# Overview of changes:
+# + change threshold-calculator: rather than using median, use the almost maximum
+#     minus 25dB. (25 dB is in line with the standard setting to detect silence
+#     in the "To TextGrid (silences)" function.
+#     Almost maximum (.99 quantile) is used rather than maximum to avoid using
+#     irrelevant non-speech sound-bursts.
+# + add silence-information to calculate articulation rate and ASD (average syllable
+#     duration.
+#     NB: speech rate = number of syllables / total time
+#         articulation rate = number of syllables / phonation time
+# + remove max number of syllable nuclei
+# + refer to objects by unique identifier, not by name
+# + keep track of all created intermediate objects, select these explicitly,
+#     then Remove
+# + provide summary output in Info window
+# + do not save TextGrid-file but leave it in Object-window for inspection
+#     (if requested in startup-form)
+# + allow Sound to have starting time different from zero
+#      for Sound objects created with Extract (preserve times)
+# + programming of checking loop for mindip adjusted
+#      in the orig version, precedingtime was not modified if the peak was rejected !!
+#      var precedingtime and precedingint renamed to currenttime and currentint
+#
+# + bug fixed concerning summing total pause, feb 28th 2011
+###########################################################################
+
 # The input is a single wav file to be analyzed
 
 form Counting Syllables in Sound Utterances

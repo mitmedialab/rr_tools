@@ -59,10 +59,11 @@ positional arguments:
 
 optional arguments:
 - `-h`, `--help`     show this help message and exit
-- `-i IN_DIR`        Directory containing the first row of audio files. Default is
+- `-i IN_DIR`        Directory containing the first column of audio files. Default is
   current working directory.
-- `-i2 IN_DIR2`   Directory containig the second row of audio files. Default is
-  the directory containing the first row of audio files.
+- `-i2 IN_DIR2`   Directory containig the second column of audio files. Default is the directory containing the first column of audio files.
+- `-praat PRAAT`  Instead of creating a symbolic link to praat on MacOS, you may specify its location here.
+
 
 ## Story morphing
 
