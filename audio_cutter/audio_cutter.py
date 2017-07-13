@@ -20,6 +20,7 @@ def cut_audio(line):
     cut_name = audio_file_name[0:-4] + '_cut_%d' % file_num + '.wav'
     #export to output folder
     cut.export(args.out_dir + cut_name, format="wav")
+    print('---> ' + cut_name)
     
 def cvt_time(time):
     ''' converts time format from HH:MM:SS to milli-seconds
