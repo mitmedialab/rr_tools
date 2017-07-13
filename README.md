@@ -47,7 +47,7 @@ optional arguments:
 ## audio_comparer
 
 ### Usage
-`python audio_comparer.py [-h] [-i IN_DIR] [-i2 IN_DIR2] speech_files`
+`python audio_comparer.py [-h] [-i IN_DIR] [-i2 IN_DIR2] [-praat PRAAT] speech_files`
 
 Compares speech files using mean pitch, mean intensity, and speaking rate. 
 
