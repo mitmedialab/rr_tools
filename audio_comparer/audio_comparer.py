@@ -1,10 +1,11 @@
+''' Compares speech files using mean pitch, mean intensity, and speaking rate. If on MacOS, create symbolic link to praat by running the following command
+ln -s /Applications/Praat.app/Contents/MacOS/Praat /usr/local/bin/praat
+'''
 import argparse
 import subprocess
 import time
 import sys
 import os
-# If on MacOS, create symbolic link to praat by running the following command
-# ln -s /Applications/Praat.app/Contents/MacOS/Praat /usr/local/bin/praat
 
 def run_praat(speech_file):
     ''' Runs the speech.wav through a praat script to determine the mean_pitch, mean_intensity, and speaking_rate. Retutns an unparsed string of these values.
