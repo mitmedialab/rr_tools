@@ -39,12 +39,7 @@ disp "Video will be saved to: $OUT1"
 
 
 # Record using ffmpeg.
-ffmpeg -y -f avfoundation -s 640x480 -r 30 -i $DEVICE1 \
-    -vf "drawbox=y=0: color=black@1.0: width=iw:height=40: t=20, \
-        drawtext=fontfile=/Library/Fonts/Arial.ttf:  \
-        text='%{frame_num}  %{gmtime}  %{pts}': fontcolor=white: x=7: y=15: \
-        box=1: boxcolor=black@1.0" \
-    $OUT1
+ffmpeg -y -f avfoundation -s 640x480 -r 30 -i $DEVICE1 $OUT1
 
 disp "Video was saved to: $OUT1"
 
