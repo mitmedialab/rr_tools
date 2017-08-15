@@ -13,15 +13,32 @@ def cut_audio(line):
     line format: [AUDIO_FILE_NAME, START, STOP]
     '''
     audio_file_name = line[0]
-    audio = AudioSegment.from_wav(args.in_dir + audio_file_name)
-    cut = audio[cvt_time(line[1]):cvt_time(line[2])]
-    #create name for cut audio file
-    file_num = get_num(audio_file_name)
-    cut_name = audio_file_name[0:-4] + '_cut_%d' % file_num + '.wav'
-    #export to output folder
-    cut.export(args.out_dir + cut_name, format="wav")
-    print('---> ' + cut_name)
-    
+    file_type = audio_file_name[-4:]
+
+    if file_type == '.wav':
+        audio = AudioSegment.from_wav(args.in_dir + audio_file_name)
+        cut = audio[cvt_time(line[1]):cvt_time(line[2])]
+        #create name for cut audio file
+        file_num = get_num(audio_file_name)
+        cut_name = audio_file_name[0:-4] + '_cut_%d' % file_num + '.wav'
+        #export to output folder
+        cut.export(args.out_dir + cut_name, format="wav")
+        print('---> ' + cut_name + '\n')
+    elif file_type == '.mp3':
+        audio = AudioSegment.from_mp3(args.in_dir + audio_file_name)
+        cut = audio[cvt_time(line[1]):cvt_time(line[2])]
+        #create name for cut audio file
+        file_num = get_num(audio_file_name)
+        cut_name = audio_file_name[0:-4] + '_cut_%d' % file_num + '.mp3'
+        #export to output folder
+        cut.export(args.out_dir + cut_name, format="mp3")
+        print('---> ' + cut_name + '\n')
+    else:
+        #error, incompatible file type
+        print('**** ' + audio_file_name + ' caused an error')
+        print('**** ' + file_type + ' incompatible file type')
+        print('**** skipping file\n')
+        
 def cvt_time(time):
     ''' converts time format from HH:MM:SS to milli-seconds
     '''
@@ -39,7 +56,7 @@ def get_num(audio_file_name):
         return num[audio_file_name]
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='''Cuts .wav files at specified start 
+    parser = argparse.ArgumentParser(description='''Cuts .wav and .mp3 files at specified start 
         and stop times. Requires a .txt file to detail this information.''')
     parser.add_argument('timestamps_file', type=str, default='timestamps_sample.txt', help='''Name 
         of the text file with timestamps, e.g. "timestamps_sample.txt". Each line of the file lists an audio file followed by 
