@@ -57,7 +57,7 @@ def get_num(audio_file_name):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''Cuts .wav and .mp3 files at specified start 
-        and stop times. Requires a .txt file to detail this information.''')
+        and stop times. Requires a .txt file to detail this information. ffmpeg is needed to cut .mp3's''')
     parser.add_argument('timestamps_file', type=str, default='timestamps_sample.txt', help='''Name 
         of the text file with timestamps, e.g. "timestamps_sample.txt". Each line of the file lists an audio file followed by 
         start and stop times seperated by tabs, e.g. "audio_sample.wav    HH:MM:SS    HH:MM:SS"''')
