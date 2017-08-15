@@ -28,8 +28,8 @@ These tools were built and tested with:
 ### Usage
 `python audio_cutter.py [-h] [-i IN_DIR] [-o OUT_DIR] timestamps_file`
 
-Cuts .wav files at specified start and stop times. Requires a .txt file to
-detail this information.
+Cuts .wav and .mp3 files at specified start and stop times. Requires a .txt file 
+to detail this information. ffmpeg is needed to cut .mp3's
 
 positional arguments:
 - `timestamps_file`  Name of the text file with timestamps, e.g.
