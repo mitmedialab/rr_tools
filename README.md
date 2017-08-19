@@ -26,9 +26,10 @@ These tools were built and tested with:
 ## audio_cutter
 
 ### Usage
+
 `python audio_cutter.py [-h] [-i IN_DIR] [-o OUT_DIR] timestamps_file`
 
-Cuts .wav and .mp3 files at specified start and stop times. Requires a .txt file 
+Cuts .wav and .mp3 files at specified start and stop times. Requires a .txt file
 to detail this information. ffmpeg is needed to cut .mp3's
 
 positional arguments:
@@ -47,9 +48,10 @@ optional arguments:
 ## audio_comparer
 
 ### Usage
+
 `python audio_comparer.py [-h] [-i IN_DIR] [-i2 IN_DIR2] [-praat PRAAT] speech_files`
 
-Compares speech files using mean pitch, mean intensity, and speaking rate. 
+Compares speech files using mean pitch, mean intensity, and speaking rate.
 
 positional arguments:
 - `speech_files`  Name of text file with speech files to be compared, e.g.
@@ -59,10 +61,12 @@ positional arguments:
 
 optional arguments:
 - `-h`, `--help`     show this help message and exit
-- `-i IN_DIR`        Directory containing the first column of audio files. Default is
-  current working directory.
-- `-i2 IN_DIR2`   Directory containig the second column of audio files. Default is the directory containing the first column of audio files.
-- `-praat PRAAT`  Instead of creating a symbolic link to praat on MacOS, you may specify its location here.
+- `-i IN_DIR`        Directory containing the first column of audio files.
+  Default is current working directory.
+- `-i2 IN_DIR2`   Directory containig the second column of audio files. Default
+  is the directory containing the first column of audio files.
+- `-praat PRAAT`  Instead of creating a symbolic link to praat on MacOS, you
+  may specify its location here.
 
 
 ## Story morphing
@@ -97,6 +101,7 @@ particular naming conventions for files, participant IDs, and session numbers.
 Some work needs to be done to generalize these scripts for other datasets.
 
 ### Usage
+
 `python run-liwc.py [-h] [--server SERVER] [--verbose] key secret pids dir1`
 
 Get the LIWC scores for a speaker. Pass in a list of files for speakers. Each
@@ -131,6 +136,36 @@ positional arguments:
 
 optional arguments:
     - `-h`, `--help`: show this help message and exit
+
+
+## Text analysis
+
+So far, we have the following text analysis tools:
+
+### Check for keywords
+
+`usage: check_for_keywords.py [-h] [-e, --exact] keywords infiles [infiles ...]`
+
+Given a provided set of keywords or phrases and list of text files, count how
+many times each keyword or phrase appears in each text file (case-
+insensitive).
+
+positional arguments:
+    - `keywords`: Text file containing keywords or phrases, one per line
+    - `infiles`: One or more text files to process
+
+optional arguments:
+    - `-h, --help`: show this help message and exit
+    - `-e, --exact`: Match words exactly (case-insensitive) vs. lemmatizing first
+
+The output of this script is a tab-delimited table with a header line listing
+all the keywords or phrases followed by one line per text file processed with
+the count for each keyword or phrase. The sample keyword list and sample texts produce the following output:
+
+> filename	booyah	chunk	friend	massiv	onc upon a time	penguin	potato	slip	snowman hat	the end
+> sample-text-01	0	2	2	2	1	2	0	2	0	1
+> sample-text-02	0	2	0	2	1	13	0	2	2	1
+
 
 ## Reporting Bugs
 
