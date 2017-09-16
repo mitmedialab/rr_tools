@@ -1,5 +1,7 @@
 #!/bin/sh
-
+# Jacqueline Kory Westlund
+# August 2017
+#
 # Ask user to pick video and audio devices to record from.
 # Use ffmpeg to record to a file, which by default gets saved in a "rr1-videos"
 # directory in the current working directory.

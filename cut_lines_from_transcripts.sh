@@ -1,4 +1,7 @@
 #!/bin/sh
+# Jacqueline Kory Westlund
+# August 2017
+#
 # For the provided file:
 # - Remove "Tega" and "Experimenter" lines from transcripts.
 # - Remove the word "Child:" and any stuff in [brackets].
