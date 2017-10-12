@@ -1,0 +1,322 @@
+# Configuration of the robot's questions and audio.
+
+#######################################################################
+# Generic responses for when a user times out or reaches the max number of
+# attempts for a question. One of the responses listed in the array will be
+# chosen randomly. These can be overridden for individual questions below in
+# the question configuration.
+max_attempt = ["ThatsOkay", "FeelingShy", "ShareWhatYouThink"]
+timeout_prompts = ["Well", "WhatDoYouThink", "HmPrompt"]
+backchannel_prompts = ["mmhm", "uhuhh"]
+
+story_intro = ["OkayIHaveAGoodIdea", "HmLetsSee"]
+story_closing = ["ThisIsSuchFun", "ThisIsMyFavoriteGame", "OkayMyStorysOver"]
+
+#######################################################################
+## EXAMPLE QUESTION.
+#######################################################################
+# [questions.questionname]
+## The filename of the question audio (wav file).
+#question = "question_audio"
+#
+## If the user times out (we don't get any response), the robot does this.
+#timeout_prompts = ["timeout_speech", "thing_robot_says"]
+#
+## If the user reaches the max number of answer attempts, the robot does this.
+#max_attempt = ["too_many_tries", "robot_says_stuff"]
+#
+## If the user responds but not with a response that's in the set we care
+## about, prompt for more with one of these prompts.
+#backchannel_prompts = ["well", "what_else_can_you_say"]
+#
+## Array of possible user responses to the question. For each user response,
+## include the response the robot should make (play all options in the list in
+## sequence). The user responses should be a space-delimited set of lowercase
+## things that could to be present in the user response that we get from the
+## ASR for the robot to make the associated response. If any user response is
+## acceptable, list an empty string.
+#   [[questions.questionname.user_input]]
+#   user_responses = ["yes", "of course"]
+#   robot_responses = ["ads", "sdasd"]
+#
+#   [[questions.questionname.user_input]]
+#   user_responses = ["no", "have not"]
+#   robot_responses = ["ads", "sdasd"]
+#
+#   [[questions.questionname.user_input]]
+#   user_responses = [""]
+#   robot_responses = ["ads", "sdasd"]
+#######################################################################
+[questions.favorite_color]
+question = "rr1_intro_03"
+timeout_prompts = ["fav_color_prompt1", "fav_color_prompt2"]
+    [[questions.favorite_color.user_input]]
+    user_responses = [""]
+    robot_responses = ["rr1_intro_04"]
+    [[questions.favorite_color.user_input]]
+    user_responses = ["none", "nothing", "no"]
+    robot_responses = ["No_colors"]
+
+[questions.what_like_do]
+question = "rr1_intro_06"
+timeout_prompts = ["what_like_do_prompt1", "what_like_do_prompt2"]
+max_attempt = ["LikeTalkingToRobots"]
+    [[questions.what_like_do.user_input]]
+    user_responses = ["nothing", "don't know"]
+    robot_responses = ["NothingThatsOkay"]
+    [[questions.what_like_do.user_input]]
+    user_responses = [""]
+    robot_responses = ["rr1_intro_07"]
+
+[questions.like_dance]
+question = "rr1_intro_08"
+    [[questions.like_dance.user_input]]
+    user_responses = ["yes", "yeah", "sure", "okay"]
+    robot_responses = ["awesome"]
+    [[questions.like_dance.user_input]]
+    user_responses = ["no", "not really"]
+    robot_responses = ["NoThatsOkay"]
+    [[questions.like_dance.user_input]]
+    user_responses = [""]
+    robot_responses = ["HmNeutral"]
+
+[questions.help_practice]
+question = "rr1_backstory_03"
+timeout_prompts = ["WillYouHelp", "ItsJustPlaying"]
+    [[questions.help_practice.user_input]]
+    user_responses = ["yes", "of course", "sure", "yeah", "okay"]
+    robot_responses = ["rr1_backstory_04"]
+    [[questions.help_practice.user_input]]
+    user_responses = ["no", "nah", "nope", "uh"]
+    robot_responses = ["rr1_backstory_05"]
+
+[questions.listen_to_story]
+question = "rr1_story_02"
+timeout_prompts = ["PleaseIHaveAGoodIdea", "AwComeOnItllBeFun"]
+    [[questions.listen_to_story.user_input]]
+    user_responses = ["yes", "of course", "yeah", "okay", "sure", "story"]
+    robot_responses = ["rr1_story_03"]
+    [[questions.listen_to_story.user_input]]
+    user_responses = [""]
+    robot_responses = ["AwComeOnItllBeFun"]
+
+[questions.liked_story]
+question = "rr1_story_06"
+    [[questions.liked_story.user_input]]
+    user_responses = ["yes", "of course", "yeah", "story", "like"]
+    robot_responses = ["Yay"]
+    [[questions.liked_story.user_input]]
+    user_responses = ["no", "didn't"]
+    robot_responses = ["YouDidntSorry", "AwIllHaveToPracticeMore"]
+
+[questions.look_at_pictures]
+question = "rr1_picture1_01"
+timeout_prompts = ["ItsJustPlaying", "AwComeOnItllBeFun"]
+max_attempt = ["IWantToAnyway"]
+    [[questions.look_at_pictures.user_input]]
+    user_responses = ["yes", "of course", "yeah", "picture", "like"]
+    robot_responses = ["rr1_picture1_02"]
+    [[questions.look_at_pictures.user_input]]
+    user_responses = ["no", "nah", "nope", "uh"]
+    robot_responses = ["AwComeOnItllBeFun"]
+
+[questions.picture3_park]
+question = "rr1_picture3_03"
+timeout_prompts = ["DontLikeAboutPark", "HavebeenToPark"]
+    [[questions.picture3_park.user_input]]
+    user_responses = [""]
+    robot_responses = ["uhuhh"]
+
+[questions.tellmemore]
+question = "TellMeMore"
+timeout_prompts = ["uhuhh", "ShareWhatYouThink", "keepGoing"]
+    [[questions.tellmemore.user_input]]
+    user_responses = [""]
+    robot_responses = ["HmInterested"]
+
+[questions.picture3_friends]
+question = "rr1_picture3_05"
+timeout_prompts = ["FriendIsGirl", "DoYouPlay"]
+    [[questions.picture3_friends.user_input]]
+    user_responses = [""]
+    robot_responses = ["mmhm"]
+
+[questions.picture4_movie]
+question = "rr1_picture4_03"
+timeout_prompts = ["YouKnowMovies", "MoviesSuchAs"]
+    [[questions.picture4_movie.user_input]]
+    user_responses = [""]
+    robot_responses = ["uhuhh"]
+
+[questions.picture4_superpower]
+question = "rr1_picture4_05"
+timeout_prompts = ["FlyToo", "WhatWouldBeCool"]
+    [[questions.picture4_superpower.user_input]]
+    user_responses = [""]
+    robot_responses = ["mmhm"]
+
+[questions.wait_for_wakeup]
+question = ""
+timeout_prompts = [""]
+backchannel_prompts = [""]
+max_attempt = [""]
+    [[questions.wait_for_wakeup.user_input]]
+    user_responses = ["ice cream", "ice", "cream"]
+    robot_responses = [""]
+
+#[questions.questionname2]
+#question = "question_audio"
+#timeout_prompts = ["", ""]
+#max_attempt = ["", ""]
+    #[[questions.questionname.user_input]]
+    #user_responses = ["", ""]
+    #robot_responses = ["", ""]
+
+#######################################################################
+## EXAMPLE AUDIO.
+#######################################################################
+## We assume that the audio filename is "audioname.wav". We also assume that
+## there are no special animations to play with the audio. If you want to
+## override either of these defaults, specify it here. For example, if the audio
+## name is "audioname" but the audio file name is not "audioname.wav" but
+## instead "somethingelse.wav", you would need to specify that here. If you want
+## to choreograph animations that get played during the speech, you need to
+## specify those here.
+#[audio.audioname]
+## Name of the audio file.
+#name = "filename"
+## Animations that should be played during the audio. The time is in seconds
+## since the start of the audio file.
+#animations = [ { time = 0.1, anim = "EXCITED" },
+#               { time = 0.1, anim = "PERKUP" } ]
+#######################################################################
+[audio.Yay]
+name = "Yay"
+animations = [ { time = 0.1, anim = "PERKUP" } ]
+
+[audio.AwIllHaveToPracticeMore]
+name = "AwIllHaveToPracticeMore"
+animations = [ { time = 0.1, anim = "SILENT_SAD" } ]
+
+[audio.rr1_intro_01]
+name = "rr1_intro_01"
+animations = [ { time = 0.1, anim = "SILENT_HAPPY_DANCE" } ]
+
+#### Iceberg: PenguinSlide story
+[audio.Penguins]
+name = "Penguins"
+animations = [ { time = 0.1, anim = "PERKUP" } ]
+
+[audio.GeorgeLikedMassiveIce0]
+name = "GeorgeLikedMassiveIce0"
+animations = [ { time = 1.5, anim = "PROUD" } ]
+
+[audio.UpUpUpIceberg0]
+name = "UpUpUpIceberg0"
+animations = [ { time = 0.1, anim = "PERKUP" },
+               { time = 2.0, anim = "SIDEPERK" } ]
+
+[audio.SlidingWasFunToo0]
+name = "SlidingWasFunToo0"
+animations = [ { time = 0.2, anim = "SILENT_HAPPY_WIGGLE" } ]
+
+[audio.SoTheyTookTurnsSliding0]
+name = "SoTheyTookTurnsSliding0"
+animations = [ { time = 0.7, anim = "SILENT_SHIMMY" } ]
+### end story
+
+[audio.rr1_backstory_02]
+name = "rr1_backstory_02"
+animations = [ { time = 5.0, anim = "SILENT_SAD" },
+               { time = 10.0, anim = "PERKUP" } ]
+
+[audio.rr1_backstory_03]
+name = "rr1_backstory_03"
+animations = [ { time = 3.0, anim = "SILENT_NOD" } ]
+
+[audio.AwComeOnItllBeFun]
+name = "AwComeOnItllBeFun"
+animations = [ { time = 1.0, anim = "SIDEPERK" } ]
+
+[audio.rr1_intro_08]
+name = "rr1_intro_08"
+animations = [ { time = 3.7, anim = "SHIMMY" } ]
+
+[audio.HmNeutral]
+name = "HmNeutral"
+animations = [ { time = 0.1, anim = "SILENT_THINKING" } ]
+
+[audio.rr1_intro_05]
+name = "rr1_intro_05"
+animations = [ { time = 2.5, anim = "HAPPY_UP" } ]
+
+[audio.rr1_intro_02]
+name = "rr1_intro_02"
+animations = [ { time = 1.0, anim = "PERKUP" } ]
+
+[audio.rr1_intro_04]
+name = "rr1_intro_04"
+animations = [ { time = 0.1, anim = "SHIMMY" } ]
+
+[audio.rr1_picture1_01]
+name = "rr1_picture1_01"
+animations = [ { time = 0.1, anim = "SILENT_AGREEMENT" } ]
+
+[audio.rr1_picture1_02]
+name = "rr1_picture1_02"
+animations = [ { time = 0.5, anim = "SIDEPERK" } ]
+
+[audio.TellMeMore]
+name = "TellMeMore"
+animations = [ { time = 0.1, anim = "SIDEPERK" } ]
+
+[audio.rr1_picture3_02]
+name = "rr1_picture3_02"
+animations = [ { time = 4.0, anim = "SWAY" },
+               { time = 10.0, anim = "SILENT_HAPPY_WIGGLE" }]
+
+[audio.rr1_picture4_02]
+name = "rr1_picture4_02"
+animations = [ { time = 6.0, anim = "SILENT_HAPPY_DANCE" } ]
+
+[audio.rr1_picture4_04]
+name = "rr1_picture4_04"
+animations = [ { time = 3.0, anim = "SILENT_AGREEMENT" },
+               { time = 8.0, anim = "PROUD" },
+               { time = 12.0, anim = "PERKUP" } ]
+
+[audio.rr1_picture3_04]
+name = "rr1_picture3_04"
+animations = [ { time = 2.0, anim = "PERKUP" },
+               { time = 7.0, anim = "SILENT_SAD" },
+               ( time = 13.0, anim = "SILENT_LAUGH" } ]
+
+[audio.ThatsAllPictures]
+name = "ThatsAllPictures"
+animations = [ { time = 0.1, anim = "PROUD" },
+               { time = 3.0, anim = "SILENT_NOD" } ]
+
+[audio.rr1_story_19]
+name = "rr1_story_19"
+animations = [ { time = 1.0, anim = "PERKUP" } ]
+
+[audio.IceCream]
+name = "IceCream"
+animations = [ { time = 1.0, anim = "PERKUP" } ]
+
+[audio.MyNameIsRed]
+name = "MyNameIsRed"
+animations = [ { time = 0.1, anim = "SILENT_AGREEMENT" } ]
+
+[audio.WillYouHelp]
+name = "WillYouHelp"
+animations = [ { time = 0.1, anim = "SILENT_NOD" } ]
+
+[audio.ShareWhatYouThink]
+name = "ShareWhatYouThink"
+animations = [ { time = 0.1, anim = "SILENT_AGREEMENT" } ]
+
+#[audio.]
+#name = ""
+#animations = [ { time = , anim = "" } ]
+

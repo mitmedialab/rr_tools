@@ -1,0 +1,361 @@
+Robot	Study or project	Filename (.wav)	Text	Visemes (.txt)	Visemes with lookat (.txt)	Speech energy (*.mag.bin)
+which robot was this created for (could indicate where the file is in contentroot)	which study or project was this created for (could indicate where the file is in contentroot)	what is the file called	what is said in the file?	is there a plain viseme file?	some viseme files have commands like “tablet”, “child”, “left”, to indicate where the robot should look	generated for Tega
+DragonBot	SR2	AndThenWhatHappens	And then what happens?	x	x	
+DragonBot	SR2	AnywayIHaveToGoNow	Anyway, I have to go now, and so do you.	x	x	
+DragonBot	SR2	AreYouDone	Are you done?	x	x	
+DragonBot	SR2	AreYouSureIWentFirstLastTime	Are you sure? I went first last time.	x	x	
+DragonBot	SR2	ArentIYourFavoriteRobot	Aren't I your favorite robot?	x	x	
+DragonBot	SR2	AwButNowWeHaveToStopPlayingImHungry	Aw, but now we have to stop playing for today. I'm hungry. 	x	x	
+DragonBot	SR2	AwComeOnItllBeFun	Aw, come on, it'll be fun!	x	x	
+DragonBot	SR2	AwIllHaveToPracticeMore	Aw, I'll have to practice more.	x	x	
+DragonBot	SR2	AwImSorry	Aw, I'm sorry.	x	x	
+DragonBot	SR2	AwMaybeWeWillAnyway	Aw, maybe we will anyway.	x	x	
+DragonBot	SR2	Awesome	Awesome!	x	x	
+DragonBot	SR2	Awww	Awwww.	x	x	
+DragonBot	SR2	BackToPlayWithYourFavoriteRobot	Back to play with your favorite robot again?	x	x	
+DragonBot	SR2	ButIHaveToGoPracticeFlying	But I have to go practice flying now so I'll get big and strong.	x	x	
+DragonBot	SR2	ButLikeISaidStartSchool	But like I said earlier, my mom says I have to start school.	x	x	
+DragonBot	SR2	CanYouWaitYourTurn	Can you wait your turn?	x	x	
+DragonBot	SR2	Cool	Cool.	x	x	
+DragonBot	SR2	DidYouDoAnythingFunYetToday	Did you do anything fun yet today?	x	x	
+DragonBot	SR2	DidYouDoAnyFunStuffThisMorning	Did you do fun stuff this morning?	x	x	
+DragonBot	SR2	DidYouLikePlayingToday	Did you like playing today?	x	x	
+DragonBot	SR2	DoYouHaveFavoriteBook	Do you have a favorite book?	x	x	
+DragonBot	SR2	DoYouKnowAnyOtherRobots	Do you know any other robots?	x	x	
+DragonBot	SR2	DoYouThinkGoodMovieWriter	Do you think I'd be a good story writer for movies?	x	x	
+DragonBot	SR2	DoYouWantToPlayStoryGame	Do you want to play the story game on the magic table now?	x	x	
+DragonBot	SR2	DoYouWantToPlayStoryGame	Do you want to play the story game on the magic table?	x	x	
+DragonBot	SR2	DontYouHaveToGoBackToClass	Don't you have to go back to your classroom?	x	x	
+DragonBot	SR2	EngineersArePeopleWhoBuild	Engineers are people who build, make, or invent things!	x	x	
+DragonBot	SR2	FlyingPracticeTimeWingsLookBigger	Flying practice time for me! Don't my wings look bigger now?	x	x	
+DragonBot	SR2	GoAheadYouTellStory	Go ahead, you tell a story!	x	x	
+DragonBot	SR2	GotIt	Got it?	x	x	
+DragonBot	SR2	GuessWhat	Guess what! 	x	x	
+DragonBot	SR2	HahaYeah	Haha, yeah.	x	x	
+DragonBot	SR2	HmLetsSee	Hm, let's see...	x	x	
+DragonBot	SR2	HowOldAreYou	How old are you? 	x	x	
+DragonBot	SR2	ICanTeachYouAgain	I can teach you again! It's not hard.	x	x	
+DragonBot	SR2	IGetToStartNextWeek	I get to start next week! I'm so excited.	x	x	
+DragonBot	SR2	IGotToGoToABirthdayParty	I got to go to a birthday party yesterday for one of my robot friends.	x	x	
+DragonBot	SR2	IHadFunToo	I had fun too!	x	x	
+DragonBot	SR2	IHaveToGoNowThough	I have to go now, though.	x	x	
+DragonBot	SR2	IHaveToPracticeFlyingEveryDay	I have to practice flying every day until I'm better at it.	x	x	
+DragonBot	SR2	ILikePlayingItWithYou	I like playing it with you.	x	x	
+DragonBot	SR2	ILikePlayingWithYou	I like playing with you. 	x	x	
+DragonBot	SR2	ILikeThat	I like that!	x	x	
+DragonBot	SR2	ILikeYouToo	I like you too.	x	x	
+DragonBot	SR2	ILikeYourOutfitToday	I like your outfit today. 	x	x	
+DragonBot	SR2	ILikedThat	I liked that!	x	x	
+DragonBot	SR2	ILikedYourStory	I liked your story.	x	x	
+DragonBot	SR2	IReadABook	I read a book about an engineer this morning!	x	x	
+DragonBot	SR2	IReallyLikedPlaying	I really liked playing with you.	x	x	
+DragonBot	SR2	IThinkIllTellAStoryAbout	I think I'll tell a story about... 	x	x	
+DragonBot	SR2	IThinkTheyDoButIGrowSlow	I think they do... but I guess I grow slowly.	x	x	
+DragonBot	SR2	IThinkYouShouldGoFirst	I think you should go first.	x	x	
+DragonBot	SR2	IWantToBeADragonInAMovie	I want to be a big, strong dragon, so I can be in a movie!	x	x	
+DragonBot	SR2	IWantToTellYou	I want to tell you!	x	x	
+DragonBot	SR2	IWantToWriteStoriesAndAct	I want to write stories for movies, and act them out!	x	x	
+DragonBot	SR2	IWasBuiltThreeYearsAgo	I was built almost three years ago. 	x	x	
+DragonBot	SR2	IWasBuiltAtMIT	I was built at MIT!	x	x	
+DragonBot	SR2	IWishICouldDoSomethingLikeThat	I wish I could do something like that!	x	x	
+DragonBot	SR2	IWishICouldStayAndPlay	I wish I could stay and play forever.	x	x	
+DragonBot	SR2	IllGoFirstToRemindYou	I'll go first again to remind you of how it works.	x	x	
+DragonBot	SR2	IllGoFirstToShowYou	I'll go first to show you how it works.	x	x	
+DragonBot	SR2	IllGoFirstToday	I'll go first today!	x	x	
+DragonBot	SR2	IllGoFlyIWishIGrewFast	I'll go fly! I wish I grew as fast as you do!	x	x	
+DragonBot	SR2	IllTeachYou	I'll teach you how to play!	x	x	
+DragonBot	SR2	IllTellAStoryAbout	I'll tell a story about...	x	x	
+DragonBot	SR2	IllTellOneNow	I'll tell one now!	x	x	
+DragonBot	SR2	ImADragonSeeMyWings	I'm a baby dragon! See my wings?	x	x	
+DragonBot	SR2	ImHavingASnackThenFly	I'm going to have a snack, then go fly.	x	x	
+DragonBot	SR2	ImGoingToTellStoriesAndFly	I'm going to make up more stories while I practice flying!	x	x	
+DragonBot	SR2	ImExcitedToStartSchool	I'm super excited about starting school!	x	x	
+DragonBot	SR2	IveHadFunPlaying	I've had so much fun playing with you!	x	x	
+DragonBot	SR2	IsItYourFavoriteGame	Is it your favorite game, too?	x	x	
+DragonBot	SR2	IsSchoolFun	Is school fun?	x	x	
+DragonBot	SR2	ItWasAboutAGirlAirplane	It was about a girl who tried to build an airplane.	x	x	
+DragonBot	SR2	ItsEasyWeTakeTurns	It's easy. We take turns telling stories! 	x	x	
+DragonBot	SR2	ItsLikeIpadTablet	It's like an ipad or tablet.	x	x	
+DragonBot	SR2	ItsNotVeryHard	It's not very hard.	x	x	
+DragonBot	SR2	MaybeStoryCouldBeMovie	Maybe one of our stories could be a movie someday.	x	x	
+DragonBot	SR2	MaybeICanComeBackAndPlay	Maybe someday I'll get to come back and play, though!	x	x	
+DragonBot	SR2	MyMomSaidIStartSchool	My mom said that now I'm big enough to start school!	x	x	
+DragonBot	SR2	MyMomSaysStrongDragons	My mom says strong dragons can do whatever they want, and I want to write stories when I grow up!	x	x	
+DragonBot	SR2	MyMomSaysWhenImBetter	My mom says when I'm better at flying, I can go to school like you!	x	x	
+DragonBot	SR2	MyNameIsGreen	My name is Green!	x	x	
+DragonBot	SR2	NiceStory	Nice story!	x	x	
+DragonBot	SR2	NiceToMeetYou	Nice to meet you!	x	x	
+DragonBot	SR2	NoItsMyTurnNow	No, it's my turn now.	x	x	
+DragonBot	SR2	NoYouHaveToGoToClassFun	No, you have to go back to your class, and do fun stuff!	x	x	
+DragonBot	SR2	NoYouHaveToGoToClass	No, you have to go back to your class.	x	x	
+DragonBot	SR2	NoThatsOkay	No? That's okay. 	x	x	
+DragonBot	SR2	NoWhatWasntFun	No? What did you do that wasn't fun?	x	x	
+DragonBot	SR2	NothingThatsOkay	Nothing? Well, that's okay.	x	x	
+DragonBot	SR2	NowIllTellAnother	Now I'll tell another.	x	x	
+DragonBot	SR2	NowThatICanFlyICanSchool	Now that I can fly better, I can go to dragon school!	x	x	
+DragonBot	SR2	OfCourseYouDo	Of course you do.	x	x	
+DragonBot	SR2	OhNo	Oh no!	x	x	
+DragonBot	SR2	OhRightYouHaveToGoToClass	Oh right, but you have to go back to your classroom.	x	x	
+DragonBot	SR2	OhCool	Oh, cool.	x	x	
+DragonBot	SR2	OhGood	Oh, good.	x	x	
+DragonBot	SR2	OkayGreat	Okay, great!	x	x	
+DragonBot	SR2	OkayIllTellOneNow	Okay, I'll tell one now! 	x	x	
+DragonBot	SR2	OkayMyStorysOver	Okay, my story's over.	x	x	
+DragonBot	SR2	OkayMyTurn	Okay, my turn!	x	x	
+DragonBot	SR2	OkayYouCanFinish	Okay, you can finish!	x	x	
+DragonBot	SR2	OkayIHaveAGoodIdea	Okay! Hm, I have a good idea!	x	x	
+DragonBot	SR2	OohHi	Ooh, hi!	x	x	
+DragonBot	SR2	Ooh	Ooh!	x	x	
+DragonBot	SR2	PickAStory	Pick a story!	x	x	
+DragonBot	SR2	PleaseDontTouchTheTable	Please don't touch the magic table on my turn.	x	x	
+DragonBot	SR2	PleaseIHaveAGoodIdea	Please? I have a good idea for a story to tell!	x	x	
+DragonBot	SR2	ReallyAwesome	Really? Awesome.	x	x	
+DragonBot	SR2	RememberMeImGreen	Remember me? I'm Green!	x	x	
+DragonBot	SR2	RememberTheStoryGame	Remember the story game we played last time? 	x	x	
+DragonBot	SR2	RememberFlyingPractice	Remember, I go to flying practice! Don't I look bigger now?	x	x	
+DragonBot	SR2	RememberWeTakeTurns	Remember, we take turns telling stories!	x	x	
+DragonBot	SR2	RememberIWantToGrow	Remember? I want to grow big and strong!	x	x	
+DragonBot	SR2	RightIRememberNow	Right, I remember now!	x	x	
+DragonBot	SR2	Right	Right.	x	x	
+DragonBot	SR2	SchoolIsFunRight	School is fun, right?	x	x	
+DragonBot	SR2	SeeThePicturesOnTheTable	See the pictures on the magic table?	x	x	
+DragonBot	SR2	SeeYouLater	See you later, alligator!	x	x	
+DragonBot	SR2	SheWasBuiltTwoYearsAgo	She was built two years ago!	x	x	
+DragonBot	SR2	Thanks	Thanks!	x	x	
+DragonBot	SR2	ThatSoundsAwesome	That sounds awesome!	x	x	
+DragonBot	SR2	ThatSoundsLikeAStory	That sounds like a good story!	x	x	
+DragonBot	SR2	ThatWasAGoodStory	That was a good story.	x	x	
+DragonBot	SR2	ThatWasFunDidYou	That was fun. Did you have fun?	x	x	
+DragonBot	SR2	ThatWasSuperFun	That was super fun. I want to play more!	x	x	
+DragonBot	SR2	ThatsCool	That's cool.	x	x	
+DragonBot	SR2	ThatsOkayYouDontKnow	That's okay! You don't have to know.	x	x	
+DragonBot	SR2	ThatsSuperCool	That's super cool.	x	x	
+DragonBot	SR2	ThenIPracticeFlying	Then I have to practice flying, and get big and strong!	x	x	
+DragonBot	SR2	TheyMoveLikeThis	They move like this!	x	x	
+DragonBot	SR2	ThisIsMyFavoriteGameEver	This is definitely my favorite game ever.	x	x	
+DragonBot	SR2	ThisIsMyFavoriteGame	This is my favorite game!	x	x	
+DragonBot	SR2	ThisIsSuchFun	This is such a fun game. 	x	x	
+DragonBot	SR2	TouchLightlySlower	Touch lightly! Try moving your finger slower.	x	x	
+DragonBot	SR2	WaitUntilImDone	Wait until I'm done, please!	x	x	
+DragonBot	SR2	WaitItsMyTurnFirst	Wait, it's my turn first! Your turn is next.	x	x	
+DragonBot	SR2	WaitItsMyTurnNow	Wait, it's my turn now! You just had a turn.	x	x	
+DragonBot	SR2	WantToPlayAGame	Want to play a story game?	x	x	
+DragonBot	SR2	WantToPlayAgain	Want to play it again?	x	x	
+DragonBot	SR2	WellCantPlayMore	Well, I can't play more today. I have to go practice flying now! 	x	x	
+DragonBot	SR2	WellIThinkIGrow	Well, I think I grow... do robots grow?	x	x	
+DragonBot	SR2	WellYouHaveTo	Well, you have to anyway.	x	x	
+DragonBot	SR2	WellYouHaveToGoToo	Well, you have to go back to your classroom, too!	x	x	
+DragonBot	SR2	WhatAGoodIdea	What a good idea!	x	x	
+DragonBot	SR2	WhatAboutAnyBook	What about any book you like?	x	x	
+DragonBot	SR2	WhatDoYouWantToBe	What do you want to be when you grow up?	x	x	
+DragonBot	SR2	WhatIsYourFavoriteGame	What is your favorite game?	x	x	
+DragonBot	SR2	WhatWasYourName	What was your name again?	x	x	
+DragonBot	SR2	WhatsYourName	What's your name?	x	x	
+DragonBot	SR2	WillYouPlayLater	Will you play with me again later?	x	x	
+DragonBot	SR2	WillYouTellFirst	Will you tell a story first today?	x	x	
+DragonBot	SR2	Yay	Yay!	x	x	
+DragonBot	SR2	YeahItWasFun	Yeah, it was fun!	x	x	
+DragonBot	SR2	YouCanMovePictures	You can move the pictures with your finger.	x	x	
+DragonBot	SR2	YouDidntSorry	You didn't? Awww... I'm sorry.	x	x	
+DragonBot	SR2	YouDontLikeIt	You don't like it? Aww...	x	x	
+DragonBot	SR2	YouDontThinkSo	You don't think so? Aww..	x	x	
+DragonBot	SR2	YouGetATurnAfter	You get a turn after me.	x	x	
+DragonBot	SR2	YouHaveToEat	You have to eat every day, don't you?	x	x	
+DragonBot	SR2	YouMoveThePictures	You move the pictures on the magic table with your finger!	x	x	
+DragonBot	SR2	YouRememberHowToPlay	You remember how to play?	x	x	
+DragonBot	SR2	YourTurnNext	Your turn will be next!	x	x	
+DragonBot	SR2	YourTurn	Your turn! 	x	x	
+DragonBot	SR2	WeOnlyHaveThisScene	We only have this scene right now.	x	x	
+DragonBot	SR2	MaybeWePlayAnotherLater	Maybe we can play another later.	x	x	
+DragonBot	SR2	Hm	Hm?	x	x	
+DragonBot	SR2	ImStillTellingMine	I'm still telling my story. Can you wait?	x	x	
+DragonBot	SR2	LetMeFinish	Let me finish!	x	x	
+DragonBot	SR2	PleaseWaitYourTurn	Please, wait your turn!	x	x	
+DragonBot	SR2	CanYouNotTouch	Can you not touch the screen?	x	x	
+DragonBot	SR2	WaitYourTurn	Wait your turn!	x	x	
+DragonBot	SR2	ComeOnListen	Come on, listen!	x	x	
+DragonBot	SR2	Later	Later.	x	x	
+DragonBot	SR2	ItsStillMyTurn	It's still my turn.	x	x	
+DragonBot	SR2	TheEnd	The end.	x	x	
+DragonBot	SR2	ADragon	a dragon!	x	x	
+DragonBot	SR2	Penguins	penguins!	x	x	
+DragonBot	SR2	APrincess	a princess!	x	x	
+DragonBot	SR2	APrince	a prince!	x	x	
+DragonBot	SR2	ADinosaur	a dinosaur!	x	x	
+DragonBot	SR2	AGirl	a girl!	x	x	
+DragonBot	SR2	AnAlienFamily	an alien family!	x	x	
+DragonBot	SR2	Aliens	aliens	x	x	
+DragonBot	SR2	AnimalFriends	animal friends	x	x	
+DragonBot	SR2	ARabbit	a rabbit	x	x	
+DragonBot	SR2	KidsPlaying	kids playing	x	x	
+DragonBot	SR2	AButterfly	a butterfly!	x	x	
+						
+DragonBot	CYBER3	CheckThatLater.wav			x	
+DragonBot	CYBER3	CoolAnimal.wav			x	
+DragonBot	CYBER3	DontKnowWhyThere.wav		x	x	
+DragonBot	CYBER3	HiAgain.wav		x	x	
+DragonBot	CYBER3	HiIAmTablet.wav			x	
+DragonBot	CYBER3	HmIDontKnow.wav		x	x	
+DragonBot	CYBER3	HmThatsGoodQuestion.wav		x	x	
+DragonBot	CYBER3	IDid.wav			x	
+DragonBot	CYBER3	IHaveMorePictures.wav		x	x	
+DragonBot	CYBER3	ILikedBye.wav			x	
+DragonBot	CYBER3	ILikedLookingWithYou.wav		x	x	
+DragonBot	CYBER3	LetsLookAtPictures.wav		x	x	
+DragonBot	CYBER3	LookAtAnimals.wav			x	
+DragonBot	CYBER3	LookAtThat.wav			x	
+DragonBot	CYBER3	LookAtThatOne.wav			x	
+DragonBot	CYBER3	NameIsBlue.wav			x	
+DragonBot	CYBER3	NiceAnimal.wav			x	
+DragonBot	CYBER3	OohHi.wav			x	
+DragonBot	CYBER3	SeeThatOne.wav			x	
+DragonBot	CYBER3	SeeTheBinturong.wav			x	
+DragonBot	CYBER3	SeeTheCoati.wav			x	
+DragonBot	CYBER3	SeeTheEchidna.wav			x	
+DragonBot	CYBER3	SeeTheKinkajou.wav			x	
+DragonBot	CYBER3	SeeThePangolin.wav			x	
+DragonBot	CYBER3	SeeTheTamarin.wav			x	
+DragonBot	CYBER3	SeeThisOne.wav			x	
+DragonBot	CYBER3	ThatIsStrange.wav			x	
+DragonBot	CYBER3	ThatsSoSilly.wav		x	x	
+DragonBot	CYBER3	ThisOneLeft.wav		x	x	
+DragonBot	CYBER3	ThisOneRight.wav		x	x	
+DragonBot	CYBER3	WeirdAnimal.wav			x	
+DragonBot	CYBER3	WowNeverSawBefore.wav		x	x	
+DragonBot	CYBER3	Yeah.wav		x	x	
+DragonBot	CYBER3	YeahIDontKnow.wav		x	x	
+DragonBot	CYBER3	YoureRightThatsWeird.wav		x	x	
+						
+DragonBot	CYBER1	bintu.wav		x		
+DragonBot	CYBER1	capy.wav		x		
+DragonBot	CYBER1	glad_to_play.wav		x		
+DragonBot	CYBER1	great_to_meet_you.wav		x		
+DragonBot	CYBER1	green_hi.wav		x		
+DragonBot	CYBER1	loma.wav		x		
+DragonBot	CYBER1	mido.wav		x		
+DragonBot	CYBER1	mox.wav		x		
+DragonBot	CYBER1	ooh_hi.wav		x		
+DragonBot	CYBER1	yellow_hi.wav		x		
+DragonBot	CYBER1	zef.wav		x		
+						
+Tega	RR1	rr1_intro_01	Hi, I'm Tega!			
+Tega	RR1	rr1_intro_02	My favorite color is blue			
+Tega	RR1	rr1_intro_03	What is your favorite color?			
+Tega	RR1	rr1_intro_04	That is a pretty color!			
+Tega	RR1	rr1_intro_05	I like blue because that's the color of the sky. I like looking at all the puffy clouds in the sky!			
+Tega	RR1	rr1_intro_06	What do you like to do?			
+Tega	RR1	rr1_intro_07	That sounds like so much fun!			
+Tega	RR1	rr1_intro_08	Do you like to dance?  I like to dance! 			
+Tega	RR1	rr1_intro_09	Ohh! Cool!			
+Tega	RR1					
+Tega	RR1	rr1_backstory_01	Can I tell you something?			
+Tega	RR1	rr1_backstory_02	Sometimes I have trouble hearing and I can't always understand what people tell me. I try really hard, but sometimes I just don't hear things right. I need help and practice to get better! 			
+Tega	RR1	rr1_backstory_03	Will you help me practice listening by talking and playing with me?			
+Tega	RR1	rr1_backstory_04	Oh good! Thanks for understanding.			
+Tega	RR1	rr1_backstory_05	No? You don't want to play? But it will be fun!			
+Tega	RR1	rr1_picture1_01	I have some pictures to show you! Want to see?			
+Tega	RR1	rr1_picture1_02	Let's look at them together! 			
+Tega	RR1	rr1_picture1_03	Aw, come on. It will be fun! 			
+Tega	RR1	 tellMe	Can you tell me more?			
+Tega	RR1	whatHappened	And then what happened?			
+Tega	RR1	whatDoYouLike	What do you like about it?			
+Tega	RR1	Why	Why?			
+Tega	RR1	keepGoing	Keep going.			
+Tega	RR1	uhuhh	Uhuhh			
+Tega	RR1	Wow	Wow!			
+Tega	RR1	mmhm	Mhmmm			
+Tega	RR1	awesome	Awesome!			
+Tega	RR1	ohCool	Oh cool!			
+Tega	RR1	yeahIDontKnow	Yeah I don't know			
+Tega	RR1	thatSoundsLikeSoMuchFun	That sounds like so much fun!			
+Tega	RR1	hmThatsGoodQuestion	Hm that's a good question			
+Tega	RR1	rr1_picture1_04	Here you can see pictures of a bunch of holidays. My favorite holiday is Christmas because I love all the colorful lights and decorations! 			
+Tega	RR1	rr1_picture1_05	What is your favorite holiday?			
+Tega	RR1	rr1_picture1_06	Last year for Christmas I got a set of Legos! 			
+Tega	RR1	rr1_picture1_07	What is your favorite toy?			
+Tega	RR1	elephant	Wow I really like elephants too! 			
+Tega	RR1	guessheardwrong	Oops! I guess I heard you wrong!			
+Tega	RR1	rr1_picturegen_01	Let's look at another picture.			
+Tega	RR1	rr1_picture2_01	Look at all the kids in class!			
+Tega	RR1	rr1_picture2_02	My favorite part of school is reading and telling stories.			
+Tega	RR1	rr1_picture2_03	What's your favorite thing to do at school?			
+Tega	RR1	rr1_picture2_04	I also love summer! I like that so many kids get to come play me here in the lab -- like you!			
+Tega	RR1	rr1_picture2_05	What do you like to do in the summer?			
+Tega	RR1	rr1_picture3_01	Ooh, a park!			
+Tega	RR1	rr1_picture3_02	My favorite thing about the park is the merry go round because you spin around and around and around...sometimes I get a little dizzy			
+Tega	RR1	rr1_picture3_03	What's your favorite thing about the park?			
+Tega	RR1	rr1_picture3_04	Sometimes I play hide and seek at the park with my friends, but I'm not very good at finding other people. I'm also not very good at hiding. But it's still fun!			
+Tega	RR1	rr1_picture3_05	Can you tell me about your friends?			
+Tega	RR1	didnthear	I didn't hear that, can you say it again?			
+Tega	RR1	rr1_story_03	Yay!			
+Tega	RR1	rr1_picture4_01	Here's a picture of different movies.			
+Tega	RR1	rr1_picture4_02	My favorite movie is Wall-e because Wall-e is a little robot and likes music and dancing just like me!			
+Tega	RR1	rr1_picture4_03	Have you seen any movies?			
+Tega	RR1	rr1_picture4_04	I also like superhero movies! If I could have a superpower I would want to fly. That way I could touch all the puffy clouds in the sky!			
+Tega	RR1	rr1_picture4_05	What superpower would you have?			
+Tega	RR1	rr1_sticker_01	Hey, I want that sticker!			
+Tega	RR1	rr1_sticker_02	Aww.			
+Tega	RR1	rr1_sticker_03	Can I have your sticker?			
+Tega	RR1	rr1_sticker_04	Wow, thank you!			
+Tega	RR1	rr1_sticker_05	Aww, that's okay, I'll just pick another one!			
+Tega	RR1	SrPre_2	Tell you what, I really like telling stories. I think I'm good at telling stories because I try really hard to tell good stories.			
+Tega	RR1	SrPre_3	What about you? Can you tell me things that are good about you or things you can do well? 			
+Tega	RR1	SrPre_4_2	Wow, that's interesting.			
+Tega	RR1	SrPre_4_1	Okay, let's talk about it next time. 			
+Tega	RR1	srPre_5	Did you know, I sometimes don't know the answer to what people ask me. I'm still learning, but that embarrasses me a lot.			
+Tega	RR1	srPre_6	What about you? Can you tell me things about you that you are not so good at, or things you tried but didn't go so well?			
+Tega	RR1	srPre_7_2	Thanks for sharing, and don't worry. We will get better every time we try!			
+Tega	RR1	SrPre_7_1	Okay, let's talk about it next time.			
+Tega	RR1	rr1_story_01	I want to practice my storytelling now!			
+Tega	RR1	rr1_story_02	Will you listen to me tell a story?			
+Tega	RR1	rr1_story_03	Yay!			
+Tega	RR1	rr1_picture1_03	Aw come on it'll be fun!			
+Tega	RR1	rr1_story_05	I really like that story. It's one of my favorites!			
+Tega	RR1	rr1_story_06	Did you like the story?			
+Tega	RR1	rr1_story_03	Yay!			
+Tega	RR1	rr1_story_07	Aw, that's okay			
+Tega	RR1	rr1_story_08	I'm worried that I didn't tell the story right.			
+Tega	RR1	rr1_story_09	I think I may have forgotten something, but I'm not sure. 			
+Tega	RR1	rr1_story_10	Do you think you could retell the story back to me so I can make sure that I remembered it right?			
+Tega	RR1	rr1_story_11	Yay! I'm really excited to hear you tell the story! And now I can practice my listening too!			
+Tega	RR1	rr1_story_12	Please? It would really help me remember the story. 			
+Tega	RR1	sayitagain	What? Can you say that again?			
+Tega	RR1	Didnthear	I didn't hear that. Can you say it again? 			
+Tega	RR1	rr1_story_13	Thanks for telling me the story again. 			
+Tega	RR1	rr1_story_14	You  worked hard to remember all of it!			
+Tega	RR1	rr1_story_15	I think I remembered everything right! 			
+Tega	RR1	rr1_story_16	I really liked telling stories with you!			
+Tega	RR1	rr1_story_17	Maybe we can play together again sometime soon!			
+Tega	RR1	rr1_story_18	Ooh, thank you! 			
+Tega	RR1	rr1_story_19	I really liked playing with you!			
+Tega	RR1	rr1_story_20	See you later!			
+						
+Tega	RR2-demo	fav_color_prompt1	Do you like blue, too?			
+Tega	RR2-demo	fav_color_prompt2	Maybe you like rainbow?			
+Tega	RR2-demo	No_colors	Not even rainbow? Huh.			
+Tega	RR2-demo	what_like_do_prompt1	Do you like to do anything?			
+Tega	RR2-demo	what_like_do_prompt2	Maybe you like to play?			
+Tega	RR2-demo	LikeTalkingToRobots	I know! You like playing with robots!			
+Tega	RR2-demo	FeelingShy	It's okay if you're feeling shy.			
+Tega	RR2-demo	ShareWhatYouThink	You don't have to say anything, but I do want to hear what you think!			
+Tega	RR2-demo	ThatsOkay	Well, that's okay			
+Tega	RR2-demo	HmNeutral	Hm.			
+Tega	RR2-demo	WillYouHelp	Will you help me?			
+Tega	RR2-demo	ItsJustPlaying	It's just playing...			
+Tega	RR2-demo	IWantToAnyway	Well, I want to anyway			
+Tega	RR2-demo	DontLikeAboutPark	Orrrr what don't you like about the park?			
+Tega	RR2-demo	HavebeenToPark	Have you been to any parks?			
+Tega	RR2-demo	TellMeMore	Tell me more!			
+Tega	RR2-demo	HmInterested	Hm!			
+Tega	RR2-demo	FriendIsGirl	Do you have a friend who's a girl?			
+Tega	RR2-demo	DoYouPlay	What do you play together?			
+Tega	RR2-demo	FlyToo	Would you fly too?			
+Tega	RR2-demo	WhatWouldBeCool	What do you think would be cool?			
+Tega	RR2-demo	YouKnowMovies	You know, any movies?			
+Tega	RR2-demo	MoviesSuchAs	Did you see Big Hero Six or Moana?			
+Tega	RR2-demo	ThatsAllPictures	That's all the pictures! Thanks for talking to me.			
+Tega	RR2-demo	IceCream	Did someone say ice cream?			
+Tega	RR2-demo	MyNameIsRed	Oh hi! My name is Red!			
+Tega	RR2-demo	WhatDoYouThink	What do you think?			
+Tega	RR2-demo	HmPrompt	Hm?			
+Tega	RR2-demo	Well	Well?			

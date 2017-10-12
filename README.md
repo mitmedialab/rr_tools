@@ -16,8 +16,10 @@ Tools for analysis and processing for the relational robot project.
   - if on MacOS, create symbolic link to praat by running the following command:
   - `ln -s /Applications/Praat.app/Contents/MacOS/Praat /usr/local/bin/praat`
 - nltk
-    - Used for the story morpher.
+    - Used by the story morpher and for text analysis.
     - Apache License.
+- graphviz, pygraphviz
+    - used by `script_viz.py` to generate graphs.
 
 ### Version notes
 These tools were built and tested with:
@@ -137,7 +139,6 @@ positional arguments:
 optional arguments:
     - `-h`, `--help`: show this help message and exit
 
-
 ## Text analysis
 
 So far, we have the following text analysis tools:
@@ -165,6 +166,29 @@ the count for each keyword or phrase. The sample keyword list and sample texts p
 > filename	booyah	chunk	friend	massiv	onc upon a time	penguin	potato	slip	snowman hat	the end
 > sample-text-01	0	2	2	2	1	2	0	2	0	1
 > sample-text-02	0	2	0	2	1	13	0	2	2	1
+
+## Script visualization
+
+`python script_viz.py [-h] script_config script_file mapping`
+
+Given script files and a mapping of audio file names to audio transcripts,
+generate a graph of the conversation flow. Outputs both the `.dot` file and
+a rendered `.png` file.
+
+positional arguments:
+    - `script_config`: TOML script config file.
+    - `script_file`: Main script file.
+    - `mapping`: CSV file mapping audio file names to the transcript of the
+      audio files.
+
+optional arguments:
+    - `-h, --help`: show this help message and exit
+
+The script files should follow the format defined by the
+[rr_interaction](https://github.com/mitmedialab/rr_interaction) project.
+Currently, only the main script will be graphed; any sub-scripts (such as STORY
+or REPEATING scripts) will not be included in the graph. For now, you will need
+graph those scripts individually.
 
 
 ## Reporting Bugs

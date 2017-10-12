@@ -1,3 +1,7 @@
+# Ignore graph output files.
+script_viz/*.png
+script_viz/*.dot
+
 # OS generated #
 .DS_Store*
 ._*

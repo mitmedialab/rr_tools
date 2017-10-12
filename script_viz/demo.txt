@@ -1,0 +1,46 @@
+SET	MAX_GAME_TIME	20
+SET	PROMPT_TIME	1200
+PAUSE	3
+ROBOT	FIDGET	EMPTY
+ROBOT	DO	POSE_SLEEPING
+QUESTION	wait_for_wakeup
+ROBOT	DO	YAWN
+ROBOT	DO	IceCream
+ROBOT	DO	LAUGH
+PAUSE	1
+SET	PROMPT_TIME	8
+ROBOT	DO	INTERESTED
+ROBOT	DO	MyNameIsRed
+ROBOT	DO	rr1_intro_02
+ROBOT	DO	PERKUP
+QUESTION	favorite_color
+ROBOT	DO	rr1_intro_05
+ROBOT	DO	THINKING
+ROBOT	DO	rr1_backstory_01
+ROBOT	DO	rr1_backstory_02
+QUESTION	help_practice
+QUESTION	what_like_do
+ROBOT	DO	PERKUP
+QUESTION	like_dance
+QUESTION	look_at_pictures
+ROBOT	DO	rr1_picture3_01
+ROBOT	DO	rr1_picture3_02
+QUESTION	picture3_park
+QUESTION	tellmemore
+ROBOT	DO	rr1_picture3_04
+QUESTION	picture3_friends
+QUESTION	tellmemore
+ROBOT	DO	rr1_picturegen_01
+ROBOT	DO	rr1_picture4_01
+ROBOT	DO	rr1_picture4_02
+QUESTION	picture4_movie
+QUESTION	tellmemore
+ROBOT	DO	rr1_picture4_04
+QUESTION	picture4_superpower
+QUESTION	tellmemore
+ROBOT	DO	ThatsAllPictures
+ROBOT	DO	rr1_story_19
+ROBOT	DO	rr1_story_20
+ROBOT	FIDGET	EMPTY
+ROBOT	DO	YAWN
+ROBOT	DO	POSE_SLEEPING
