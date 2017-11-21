@@ -70,6 +70,22 @@ optional arguments:
 - `-praat PRAAT`  Instead of creating a symbolic link to praat on MacOS, you
   may specify its location here.
 
+## csv_means
+
+This script was developed for getting means out of CSVs full of Affdex data.
+
+usage: `python csv_means.py [-h] [-o, --outfile OUTFILE] infiles [infiles ...]`
+
+positional arguments:
+- `infiles`: One or more CSV files to process. Assumes all CSVs have the exact
+  same format.
+
+optional arguments:
+- `-h, --help`: show this help message and exit
+- `-o, --outfile OUTFILE`: The name of a file to save the results to. Default
+  is "means.csv".
+
+### Usage
 
 ## Story morphing
 
