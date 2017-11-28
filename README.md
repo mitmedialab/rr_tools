@@ -206,6 +206,33 @@ Currently, only the main script will be graphed; any sub-scripts (such as STORY
 or REPEATING scripts) will not be included in the graph. For now, you will need
 graph those scripts individually.
 
+## Getting data from rosbags
+
+`python get_audio_from_rosbag_play.py [-h] outfile`
+
+Given AndroidAudio messages in a rosbag, listen on the 'android_audio' topic
+for audio, collect it, and save it to a wav file with the specified name.
+
+1. Start roscore.
+2. Start this node with a .wav filename to save to.
+3. Play the rosbag, e.g., `rosbag play -s 600 -r 10 nameofbag.bag` The `-s`
+   option means "start this many seconds into the bag" (useful if you don't
+   care about the first bit); the `-r` option is a multipler for the rate at
+   which to playback the bag.
+
+positional arguments:
+- `outfile`: Filename to save audio to.
+
+optional arguments:
+- `-h, --help`: show this help message and exit
+
+
+Note that there is also a python scripts called `data_from_ros.py`, which is
+supposed to do approximately this same thing -- i.e., read in a rosbag, and
+save the audio from the AndroidAudio messages to a wav file. However, due to
+some issues with how rosjava puts message information into its messages, the
+bagfiles can't be read in properly via this method, and so we can't really use
+that script yet.
 
 ## Reporting Bugs
 
