@@ -65,8 +65,9 @@ if __name__ == '__main__':
         with open(infile) as f:
             filename = os.path.splitext(os.path.basename(infile))[0]
             text = f.read().lower()
-            # Remove all punctuation and tokenize into words.
-            words = nltk.word_tokenize(text.translate(None, string.punctuation))
+
+        # Remove all punctuation and tokenize into words.
+        words = nltk.word_tokenize(text.translate(None, string.punctuation))
 
         # If we're not matching exact words, then we want to lemmatize and stem.
         if not ARGS.exact:
