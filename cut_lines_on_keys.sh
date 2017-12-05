@@ -30,12 +30,6 @@ if [ -z "$3" ]; then
     exit 1
 fi
 
-if [ -z "$3" ]; then
-    echo "$3 is not a string. Please provide a string to break the file on."
-    exit 1
-fi
-
-
 for FILE in "$1"/*.csv
 do
     echo "Processing $FILE..."
