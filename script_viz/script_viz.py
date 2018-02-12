@@ -103,6 +103,30 @@ def make_graph(sconfig, script, mapping, script_name):
             linetag = elements[0]
             del elements[0]
 
+        ######################################################################
+        # For informative lines such as STORY and repeating scripts, add an
+        # info node to the graph to acknowledge the existence of the line.
+        if "STORY" in elements[0] or "REPEAT" in elements[0]:
+            # Make an info node.
+            pcounter += 1
+            node = add_info_node(graph, elements[0], pcounter, line)
+            # Add an edge back to any previous untagged nodes that led to
+            # this one.
+            for prev_node in prev_nodes:
+                if not graph.has_edge(prev_node, node):
+                    graph.add_edge(prev_node, node)
+            # Add an edge back to any previous tagged nodes that led to
+            # this one.
+            for tag in prev_tagged_nodes:
+                for prev_node in prev_tagged_nodes[tag]:
+                    if not graph.has_edge(prev_node, node):
+                        graph.add_edge(prev_node, node)
+
+            # Save this as the latest node in the tree.
+            prev_nodes = [node]
+            # Reset the tagged node lists because we don't have a chain of
+            # them going anymore.
+            prev_tagged_nodes = {}
 
         ######################################################################
         # For ROBOT DO lines, add nodes for the speech or the animations.
@@ -472,6 +496,16 @@ def add_tablet_node(graph, name, response, tablet_tag, question_tag):
                    color="tan3", fillcolor="peachpuff2", shape="oval",
                    label=label)
     return graph.get_node("TABLET " + name + str(tablet_tag) + question_tag)
+
+
+def add_info_node(graph, name, tag, label):
+    """ Add a node to the graph that has information about something in the
+    script, such as a STORY line or a repeating script.
+    """
+    print "Adding node \"INFO\" {} {}\"...".format(name, tag)
+    graph.add_node("INFO " + name + str(tag), color="black",
+                   fillcolor="gray77", shape="oval", label=label)
+    return graph.get_node("INFO " + name + str(tag))
 
 
 def add_question_node(graph, name, tag, mapping, linetag):
