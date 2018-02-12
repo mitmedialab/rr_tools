@@ -206,6 +206,9 @@ Currently, only the main script will be graphed; any sub-scripts (such as STORY
 or REPEATING scripts) will not be included in the graph. For now, you will need
 graph those scripts individually.
 
+Currently, the tagged lined \*\*RR, \*\*NR, and IF_RESPONSE are handled. The
+script will need modification to handle other tags.
+
 ## Getting data from rosbags
 
 `python get_audio_from_rosbag_play.py [-h] outfile`

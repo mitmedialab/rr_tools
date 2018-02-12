@@ -46,29 +46,67 @@ def make_graph(sconfig, script, mapping, script_name):
     graph.node_attr["color"] = "black"
     graph.edge_attr["color"] = "black"
 
-    # Track the previous node in case we need to connect to it.
+    # Track the previous nodes in case we need to connect to them.
     prev_nodes = []
-    # Keep counters for questions and animations so we make subtrees instead
-    # of looping back when phrases are repeated. The goal is to see the
-    # conversation flow, not the total use of each phrase, so this makes sense
-    # here.
+    # Keep counters for questions, animations, and other short phrases that we
+    # may use frequently, so we make subtrees instead of looping back when
+    # phrases are repeated. The goal is to see the conversation flow, not the
+    # total use of each phrase, so this makes sense here.
     qcounter = -1
     acounter = -1
+    pcounter = -1
+
+    # Track the previous nodes that had this tag or were untagged, but not any
+    # with different tags, since we want different trees for different tags.
+    prev_tagged_nodes = {}
 
     # Iterate through the script.
     # There are only two kinds of lines we care about for making the graph:
-    # ROBOT DO stuff lines and QUESTION lines. Skip all other lines.
+    # ROBOT DO stuff lines and QUESTION lines. We also care about these lines
+    # when prefixed by IF_RESPONSE or a condition tag like **RR. Skip all other
+    # lines.
     #
     # ROBOT DO -> ROBOT DO: connect directly
     # ROBOT DO -> QUESTION: get question from toml, connect to it
     # map out QUESTION: question, prompts, responses
     # QUESTION -> ROBOT DO: last things robot says in question connect
+    #
+    # QUESTION -> IF RESPONSE: last things robot says in question connect
+    # **TAG: Add as usual, but in different colors for each tag.
     for line in script:
-        # For ROBOT DO lines, add nodes for the speech or the animations.
-        if "ROBOT\tDO" in line:
-            # We should parse this line. Split lines on tabs.
-            elements = line.strip().split("\t")
+        # Track this line's tag, if it has one. Get from a **tagged line or an
+        # IF RESPONSE line.
+        linetag = ""
 
+        # Split line on tabs.
+        elements = line.strip().split("\t")
+
+        ######################################################################
+        # For tagged (**) lines, connect:
+        #  prev line -> **this tag -> next untagged line
+        #  prev line -> **this tag -> next line if **this tag
+        #  prev line -> next line
+        if elements[0].startswith("**"):
+            # Remove the tag and process the line normally, using the tag to
+            # determine what colors to use for the line.
+            # We should parse this line. Split lines on tabs.
+            linetag = elements[0]
+            del elements[0]
+
+        ######################################################################
+        # For IF RESPONSE lines, connect:
+        #  prev line -> if response -> next line
+        #  prev line -> next line
+        if "IF_RESPONSE" in elements[0]:
+            # Remove the tag and process the line normally, using the tag to
+            # determine what colors to use for the line.
+            linetag = elements[0]
+            del elements[0]
+
+
+        ######################################################################
+        # For ROBOT DO lines, add nodes for the speech or the animations.
+        elif "ROBOT" in elements[0] and "DO" in elements[1]:
             # Line should be "ROBOT DO thing".
             if len(elements) != 3:
                 print "Error: ROBOT DO line has wrong number of elements: " \
@@ -79,26 +117,54 @@ def make_graph(sconfig, script, mapping, script_name):
             if elements[2].isupper():
                 # Make an animation node.
                 acounter += 1
-                node = add_animation_node(graph, elements[2], acounter)
+                node = add_animation_node(graph, elements[2], acounter, linetag)
             else:
                 # Make a speech node.
+                pcounter += 1
                 node = add_speech_node(
-                    graph, elements[2], "", mapping,
-                    get_speech_animations(elements[2], sconfig))
+                    graph, elements[2], pcounter, mapping,
+                    get_speech_animations(elements[2], sconfig), linetag)
 
-            # Add an edge back to any previous nodes that led to this one.
-            for prev_node in prev_nodes:
-                if not graph.has_edge(prev_node, node):
-                    graph.add_edge(prev_node, node)
-            # Save this as the latest node in the tree.
-            prev_nodes = [node]
+            # Connect tagged nodes to previous tagged nodes with the same tag,
+            # if there are any. This preserves chains of tagged nodes.
+            if linetag:
+                if linetag in prev_tagged_nodes:
+                    for prev_node in prev_tagged_nodes[linetag]:
+                        if not graph.has_edge(prev_node, node):
+                            graph.add_edge(prev_node, node)
+                # If there are no previous tagged nodes with the same tag, then
+                # connect back to any untagged nodes that led to this one.
+                else:
+                    for prev_node in prev_nodes:
+                        if not graph.has_edge(prev_node, node):
+                            graph.add_edge(prev_node, node)
+                # Save this node as the latest with its tag.
+                prev_tagged_nodes[linetag] = [node]
 
+            else:
+                # Add an edge back to any previous untagged nodes that led to
+                # this one.
+                for prev_node in prev_nodes:
+                    if not graph.has_edge(prev_node, node):
+                        graph.add_edge(prev_node, node)
+                # Add an edge back to any previous tagged nodes that led to
+                # this one.
+                for tag in prev_tagged_nodes:
+                    for prev_node in prev_tagged_nodes[tag]:
+                        if not graph.has_edge(prev_node, node):
+                            graph.add_edge(prev_node, node)
+
+                # Save this as the latest node in the tree.
+                prev_nodes = [node]
+                # Reset the tagged node lists because we don't have a chain of
+                # them going anymore.
+                prev_tagged_nodes = {}
+
+        ######################################################################
         # For QUESTION lines...
-        if "QUESTION" in line:
+        elif "QUESTION" in elements[0]:
             qcounter += 1
             qtag = "_q" + str(qcounter)
-            # Parse line, split on tabs.
-            elements = line.strip().split("\t")
 
             # Line should be "QUESTION name_of_question"
             if len(elements) != 2:
@@ -118,15 +184,44 @@ def make_graph(sconfig, script, mapping, script_name):
             question = "[no speech]" if sconfig["questions"][elements[1]][
                 "question"] == "" else sconfig["questions"][elements[1]][
                     "question"]
-            question_node = add_question_node(graph, question, qtag, mapping)
+            question_node = add_question_node(graph, question, qtag, mapping,
+                                              linetag)
 
-            # Add an edge back to any previous nodes that led to this one.
-            for prev_node in prev_nodes:
-                if not graph.has_edge(prev_node, question_node):
-                    graph.add_edge(prev_node, question_node)
-            # Reset previous node list because anything after the question
-            # should only connect back to the question.
-            prev_nodes = []
+            # Connect tagged nodes to previous tagged nodes with the same tag,
+            # if there are any. This preserves chains of tagged nodes.
+            if linetag:
+                if linetag in prev_tagged_nodes:
+                    for prev_node in prev_tagged_nodes[linetag]:
+                        if not graph.has_edge(prev_node, question_node):
+                            graph.add_edge(prev_node, question_node)
+                # If there are no previous tagged nodes with the same tag, then
+                # connect back to any untagged nodes that led to this one.
+                else:
+                    for prev_node in prev_nodes:
+                        if not graph.has_edge(prev_node, question_node):
+                            graph.add_edge(prev_node, question_node)
+                # Save this node as the latest with its tag.
+                prev_tagged_nodes[linetag] = [question_node]
+
+            else:
+                # Add an edge back to any previous untagged nodes that led to
+                # this one.
+                for prev_node in prev_nodes:
+                    if not graph.has_edge(prev_node, question_node):
+                        graph.add_edge(prev_node, question_node)
+                # Add an edge back to any previous tagged nodes that led to
+                # this one.
+                for tag in prev_tagged_nodes:
+                    for prev_node in prev_tagged_nodes[tag]:
+                        if not graph.has_edge(prev_node, question_node):
+                            graph.add_edge(prev_node, question_node)
+
+                # Reset previous node list because anything after the question
+                # should only connect back to the question.
+                prev_nodes = []
+                # Reset the tagged node lists because we don't have a chain of
+                # them going anymore.
+                prev_tagged_nodes = {}
 
             # Add question responses and prompts.
             timeout_prompts = []
@@ -159,15 +254,23 @@ def make_graph(sconfig, script, mapping, script_name):
             else:
                 user_input = sconfig["questions"][elements[1]]["user_input"]
 
+            tablet_input = []
+            if "tablet_input" not in sconfig["questions"][elements[1]]:
+                print "Warning: No tablet input specified for question \"{}\""\
+                      " in script config!".format(elements[1])
+            else:
+                tablet_input = sconfig["questions"][elements[1]][
+                    "tablet_input"]
+
             # The paths through a question are:
-            #   question -> user response -> robot response
-            #   question -> prompt -> user response -> robot response
-            #   question -> prompt -> prompt -> user response -> robot response
-            #   question -> prompt -> prompt -> max attempt
+            #  question -> user/tablet resp. -> robot resp.
+            #  question -> prompt -> user/tablet resp. -> robot resp.
+            #  question -> prompt -> prompt -> user/tablet resp. -> robot resp.
+            #  question -> prompt -> prompt -> max attempt
             #
             # Then, for all of the above, connect to the next script line:
-            #   robot response -> next line
-            #   max attempt -> next line
+            #  robot response -> next line
+            #  max attempt -> next line
 
             # Connect question -> prompt.
             prompt_nodes = []
@@ -176,7 +279,7 @@ def make_graph(sconfig, script, mapping, script_name):
                 # Make a node.
                 prompt_node = add_speech_node(
                     graph, prompt, qtag, mapping,
-                    get_speech_animations(prompt, sconfig))
+                    get_speech_animations(prompt, sconfig), linetag)
                 # Connect to the question.
                 if not graph.has_edge(question_node, prompt_node):
                     graph.add_edge(question_node, prompt_node)
@@ -195,14 +298,74 @@ def make_graph(sconfig, script, mapping, script_name):
                 # Make a node.
                 mat_node = add_speech_node(
                     graph, mat, qtag, mapping,
-                    get_speech_animations(mat, sconfig))
+                    get_speech_animations(mat, sconfig), linetag)
                 # Connect to each prompt.
                 for prompt_node in prompt_nodes:
                     if not graph.has_edge(prompt_node, mat_node):
                         graph.add_edge(prompt_node, mat_node)
                 # Add to list of previous nodes to connect the next line to,
                 # i.e., save as the latest nodes in the conversation tree.
-                prev_nodes.append(mat_node)
+                # If this line was tagged, save this question's endpoints as
+                # the latest tagged nodes.
+                if linetag:
+                    if linetag not in prev_tagged_nodes:
+                        prev_tagged_nodes[linetag] = []
+                    prev_tagged_nodes[linetag].append(mat_node)
+                else:
+                    prev_nodes.append(mat_node)
+
+            # Connect tablet responses and robot questions.
+            count = 0
+            for response_option in tablet_input:
+                # Make a node.
+                tablet_node = add_tablet_node(
+                    graph, elements[1], response_option["tablet_responses"],
+                    count, qtag)
+
+                # Connect question -> tablet response
+                if not graph.has_edge(question_node, tablet_node):
+                    graph.add_edge(question_node, tablet_node, color="tan3")
+                count += 1
+
+                # Connect prompt -> tablet response
+                for prompt_node in prompt_nodes:
+                    if not graph.has_edge(prompt_node, tablet_node):
+                        graph.add_edge(prompt_node, tablet_node, color="tan3")
+
+                # Connect tablet response -> robot responses (in a chain)
+                # This is because the robot responses are a sequence that get
+                # played in order, not a collection from which one is chosen.
+                prev_robot_node = None
+                for rresponse in response_option["robot_responses"]:
+                    # Make a node for each robot response.
+                    response = "[no speech]" if rresponse == "" else rresponse
+                    robot_node = add_speech_node(
+                        graph, response, qtag, mapping,
+                        get_speech_animations(response, sconfig), linetag)
+                    # Connect the robot responses in chain.
+                    if prev_robot_node:
+                        if not graph.has_edge(prev_robot_node, robot_node):
+                            graph.add_edge(prev_robot_node, robot_node)
+                    # Connect the robot response chain to the user response.
+                    else:
+                        if not graph.has_edge(tablet_node, robot_node):
+                            graph.add_edge(tablet_node, robot_node,
+                                           color="red3")
+                    # Save the previous robot node in case there's another to
+                    # chain after it.
+                    prev_robot_node = robot_node
+
+                # Add the last robot response to the list of previous nodes to
+                # connect the next line to, i.e., save it as the latest node in
+                # the conversation tree. And, if this line was tagged, save
+                # this question's robot response endpoint as the latest tagged
+                # node.
+                if linetag:
+                    if linetag not in prev_tagged_nodes:
+                        prev_tagged_nodes[linetag] = []
+                    prev_tagged_nodes[linetag].append(prev_robot_node)
+                else:
+                    prev_nodes.append(prev_robot_node)
 
             # Connect user responses and robot responses.
             count = 0
@@ -222,22 +385,42 @@ def make_graph(sconfig, script, mapping, script_name):
                     if not graph.has_edge(prompt_node, user_node):
                         graph.add_edge(prompt_node, user_node, color="red3")
 
-                # Connect user response -> robot response
+                # Connect user response -> robot responses (in a chain)
+                # This is because the robot responses are a sequence that get
+                # played in order, not a collection from which one is chosen.
+                prev_robot_node = None
                 for rresponse in response_option["robot_responses"]:
                     # Make a node for each robot response.
                     response = "[no speech]" if rresponse == "" else rresponse
                     robot_node = add_speech_node(
                         graph, response, qtag, mapping,
-                        get_speech_animations(response, sconfig))
-                    # Connect to the user response.
-                    if not graph.has_edge(user_node, robot_node):
-                        graph.add_edge(user_node, robot_node, color="red3")
+                        get_speech_animations(response, sconfig), linetag)
+                    # Connect the robot responses in chain.
+                    if prev_robot_node:
+                        if not graph.has_edge(prev_robot_node, robot_node):
+                            graph.add_edge(prev_robot_node, robot_node)
+                    # Connect the robot response chain to the user response.
+                    else:
+                        if not graph.has_edge(user_node, robot_node):
+                            graph.add_edge(user_node, robot_node, color="red3")
+                    # Save the previous robot node in case there's another to
+                    # chain after it.
+                    prev_robot_node = robot_node
 
-                    # Add robot responses to the list of previous nodes to
-                    # connect the next line to, i.e., save these as latest
-                    # nodes in the conversation tree.
-                    prev_nodes.append(robot_node)
+                # Add the last robot response to the list of previous nodes to
+                # connect the next line to, i.e., save it as the latest node in
+                # the conversation tree. And, if this line was tagged, save
+                # this question's robot response endpoint as the latest tagged
+                # node.
+                if linetag:
+                    if linetag not in prev_tagged_nodes:
+                        prev_tagged_nodes[linetag] = []
+                    prev_tagged_nodes[linetag].append(prev_robot_node)
+                else:
+                    prev_nodes.append(prev_robot_node)
 
+        ######################################################################
+        # Update the graph.
         graph.write("graph.dot")
         graph.layout()
         graph.draw("graph-dot.png", prog="dot")
@@ -257,11 +440,18 @@ def get_speech_animations(name, config):
     return anims
 
 
-def add_animation_node(graph, name, tag):
+def add_animation_node(graph, name, tag, linetag):
     """ Add an animation node with appropriate styling. """
     print "Adding animation node \"{}\"...".format(name)
-    graph.add_node(name + "_a" + str(tag), label=name, shape="trapezium",
-                   fillcolor="lightcyan2")
+    fillcolor = "lightcyan2"
+    if "IF_RESPONSE" in linetag:
+        fillcolor = "darkseagreen2"
+    elif "**RR" in linetag:
+        fillcolor = "thistle"
+    elif "**NR" in linetag:
+        fillcolor = "skyblue"
+    graph.add_node(name + "_a" + str(tag), label=linetag + " " + name,
+                   shape="trapezium", fillcolor=fillcolor)
     return graph.get_node(name + "_a" + str(tag))
 
 
@@ -274,12 +464,23 @@ def add_user_node(graph, name, response, user_tag, question_tag):
     return graph.get_node("USER " + name + str(user_tag) + question_tag)
 
 
-def add_question_node(graph, name, tag, mapping):
+def add_tablet_node(graph, name, response, tablet_tag, question_tag):
+    """ Add a tablet response node with appropriate styling. """
+    print "Adding node \"TABLET {}{}\"...".format(name, tablet_tag)
+    label = "[ANY]" if response[0] == "" else ",".join(response)
+    graph.add_node("TABLET " + name + str(tablet_tag) + question_tag,
+                   color="tan3", fillcolor="peachpuff2", shape="oval",
+                   label=label)
+    return graph.get_node("TABLET " + name + str(tablet_tag) + question_tag)
+
+
+def add_question_node(graph, name, tag, mapping, linetag):
     """ Add a node to the graph, style, and handle errors. """
     try:
         print "Adding question node \"{}\"...".format(name)
-        graph.add_node(name + tag, label=mapping[name], color="slateblue3",
-                       fillcolor="lavender", shape="diamond")
+        graph.add_node(name + tag, label=linetag + " " + mapping[name],
+                       color="slateblue3", fillcolor="lavender",
+                       shape="diamond")
     except KeyError:
         try:
             graph.add_node(name + tag, label=name, color="sienna2",
@@ -290,14 +491,16 @@ def add_question_node(graph, name, tag, mapping):
     return graph.get_node(name + tag)
 
 
-def add_speech_node(graph, name, tag, mapping, anims):
-    """ Add a node to the graph, style, and handle errors. """
+def add_speech_node(graph, name, tag, mapping, anims, linetag):
+    """ Add a node to the graph, style, and handle errors. If the node is on an
+    IF RESPONSE line, color it somewhat differently.
+    """
     yellow = False
     try:
-        label = mapping[name]
+        label = linetag + " " + mapping[name]
     except KeyError:
         print "WARNING: \"{}\" is not in the mapping file!".format(name)
-        label = name
+        label = linetag + " " + name
         # Color the node yellow if the audio transcript wasn't found.
         yellow = True
 
@@ -306,13 +509,40 @@ def add_speech_node(graph, name, tag, mapping, anims):
         label = "{ " + label + " | { " + " | ".join(anims) + "} }"
     try:
         print "Adding speech node \"{}\"...".format(name)
-        graph.add_node(name + tag, shape="record", label=label)
-        node = graph.get_node(name + tag)
+        graph.add_node(name + str(tag), shape="record", label=label)
+        node = graph.get_node(name + str(tag))
         # Color the node yellow if the audio transcript wasn't found.
         if yellow:
             node.attr["color"] = "sienna"
             node.attr["fillcolor"] = "goldenrod1"
-        if anims:
+        # IF RESPONSE lines will be more yellow.
+        if "IF_RESPONSE" in linetag:
+            node.attr["color"] = "navajowhite4"
+            if anims:
+                node.attr["fillcolor"] = "wheat;0.5:darkseagreen2"
+                node.attr["gradientangle"] = 270
+            else:
+                node.attr["fillcolor"] = "wheat"
+        # **RR lines will be more red.
+        elif "RR" in linetag:
+            node.attr["color"] = "lightpink4"
+            if anims:
+                node.attr["fillcolor"] = "mistyrose;0.5:thistle"
+                node.attr["gradientangle"] = 270
+            else:
+                node.attr["fillcolor"] = "mistyrose"
+
+        # **NR lines will be more blue.
+        elif "NR" in linetag:
+            node.attr["color"] = "royalblue4"
+            if anims:
+                node.attr["fillcolor"] = "aliceblue;0.5:slategray1"
+                node.attr["gradientangle"] = 270
+            else:
+                node.attr["fillcolor"] = "aliceblue"
+
+        # If there are animations, color the speech vs. anims differently.
+        elif anims:
             node.attr["fillcolor"] = "snow2;0.5:lightcyan2"
             node.attr["gradientangle"] = 270
 
@@ -338,10 +568,16 @@ def process_mapping(mapfile):
     mapping = {}
     # Map file has two lines of header before the content. Only use the rest.
     for line in maptext[2:]:
-        elements = line.split("\t")
-        # Map file columns:
-        # robot, project, filename, text, visemes...
-        mapping[elements[2]] = elements[3]
+        try:
+            elements = line.split("\t")
+            if len(elements) < 1:
+                continue
+            # Map file columns:
+            # robot, project, filename, text, visemes...
+            mapping[elements[2]] = elements[3]
+        except IndexError as ierr:
+            print line
+            print "ERROR! {}".format(ierr)
     return mapping
 
 
@@ -358,7 +594,6 @@ def main():
                         help="""CSV file mapping audio file names to the
                         transcript of the audio files.""")
     args = parser.parse_args()
-    # TODO add in any repeating scripts or story scripts?
 
     # Read in TOML script config.
     try:
