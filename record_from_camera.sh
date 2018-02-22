@@ -10,7 +10,7 @@
 set -e
 
 # Directory to save videos in.
-VID_DIR="rr1-videos"
+VID_DIR="rr2-videos"
 
 disp() {
     printf "\033[32m$1\n\033[39m"
@@ -36,7 +36,7 @@ read DEVICE1
 mkdir -p $VID_DIR
 
 DATE="$(date +%Y-%m-%d-%H-%M-%S)"
-OUT1="$VID_DIR/rr1-$1-$DATE.mp4"
+OUT1="$VID_DIR/rr2-$1-$DATE.mp4"
 disp "Video will be saved to: $OUT1"
 
 
