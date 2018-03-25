@@ -41,8 +41,7 @@ def on_android_audio_msg(msg):
     """
     # Write the incoming audio data to the wav file.
     # (or we could add to a buffer and write the whole thing at the end)
-    print "."
-    if WAV_FILE:
+    if WAV_FILE and RECORD:
         WAV_FILE.writeframes(struct.pack("h"*len(msg.samples), *msg.samples))
 
 
@@ -51,12 +50,16 @@ def on_state_msg(msg):
     to determine whether we want to save audio to a new file or not.
     """
     global RECORD
+    print "Got state message: {}".format(msg.state)
     if "start child story retell" in msg.state or \
             "start child story create" in msg.state:
+        print "Start recording!"
         RECORD = True
+        setup_audio_file()
     elif "end child story retell" in msg.state or \
             "end child story create" in msg.state:
         RECORD = False
+        print "Stop recording!"
         if WAV_FILE:
             WAV_FILE.close()
         print "Finished processing!"
@@ -111,13 +114,16 @@ if __name__ == '__main__':
         FILENAME += ".wav"
     else:
         FILENAME = ARGS.outfile[0]
+    print "will save file to {}".format(FILENAME)
 
     # Initialize ROS node.
     rospy.init_node('rr_audio_reader', anonymous=False)
     # Use r1d1_msgs/AndroidAudio to get incoming audio stream from the
     # robot's microphone or a standalone android microphone app.
-    AUDIO_SUB = rospy.Subscriber('android_audio', AndroidAudio, on_android_audio_msg)
-    STATE_SUB = rospy.Subscriber('rr/interaction_state', InteractionState, on_state_msg)
+    AUDIO_SUB = rospy.Subscriber('android_audio', AndroidAudio,
+                                 on_android_audio_msg)
+    STATE_SUB = rospy.Subscriber('rr/state', InteractionState,
+                                 on_state_msg)
 
     try:
         rospy.spin()
