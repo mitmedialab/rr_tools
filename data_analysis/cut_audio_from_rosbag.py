@@ -51,17 +51,30 @@ def on_state_msg(msg):
     """
     global RECORD
     print "Got state message: {}".format(msg.state)
-    if "start child story retell" in msg.state or \
-            "start child story create" in msg.state:
+    # For cutting out self-disclosures:
+    if "start self disclosure task" in msg.state or \
+            "start self-disclosure question" in msg.state:
         print "Start recording!"
         RECORD = True
         setup_audio_file()
-    elif "end child story retell" in msg.state or \
-            "end child story create" in msg.state:
+    elif "end self disclosure task" in msg.state or \
+            "end self-disclosure question" in msg.state:
         RECORD = False
         print "Stop recording!"
         if WAV_FILE:
             WAV_FILE.close()
+
+    # For cutting out children's stories:
+    #if "start child story retell" in msg.state or \
+            #"start child story create" in msg.state:
+        #print "Start recording!"
+        #RECORD = True
+        #setup_audio_file()
+    #elif "end child story retell" in msg.state or \
+            #"end child story create" in msg.state:
+        #RECORD = False
+        #if WAV_FILE:
+        #    WAV_FILE.close()
         print "Finished processing!"
 
 
